@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Erick Rodrigues",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -38.4, "left": -71.96, "attrs": {} },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu1",
+      "top": 2.98,
+      "left": 194.92,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 70.34,
+      "left": 57.83,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "oled1:VCC", "red", [ "h-9.45", "v-38.4", "h182.4" ] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v-57.68", "h-297.6", "v48" ] ],
+    [ "esp:GND.2", "oled1:GND", "black", [ "v-9.6", "h67.2" ] ],
+    [ "imu1:GND", "esp:GND.2", "black", [ "h-28.8", "v-38.48", "h-153.6" ] ],
+    [ "esp:21", "oled1:SDA", "white", [ "h96" ] ],
+    [ "esp:22", "oled1:SCL", "gray", [ "h86.4", "v9.6" ] ],
+    [ "imu1:SCL", "esp:22", "gray", [ "h-67.2", "v-9.68" ] ],
+    [ "imu1:SDA", "esp:21", "white", [ "h-67.2", "v9.52" ] ],
+    [ "imu1:AD0", "esp:GND.2", "black", [ "h-28.8", "v-57.58", "h0", "v-28.8", "h-153.6" ] ]
+  ],
+  "dependencies": {}
+}
